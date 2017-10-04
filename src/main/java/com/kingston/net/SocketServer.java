@@ -50,7 +50,7 @@ public class SocketServer {
 
 		logger.info("socket server start at port:{},正在监听客户端的连接...", serverPort);
 		DefaultIoFilterChainBuilder filterChain = acceptor.getFilterChain();
-		filterChain.addLast("codec", new ProtocolCodecFilter(MessageCodecFactory.getInstance()));
+		filterChain.addLast("codec", new ProtocolCodecFilter(MessageCodecFactory.getInstance()));//协议编解码过滤器
 		acceptor.setHandler( new ServerSocketIoHandler() );//指定业务逻辑处理器
 		acceptor.setDefaultLocalAddress(new InetSocketAddress(serverPort) );//设置端口号
 		acceptor.bind();//启动监听
